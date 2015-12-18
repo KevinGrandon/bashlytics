@@ -12,3 +12,10 @@ PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 HISTTIMEFORMAT='%F %T %t'
 # End Bashlytics
 ```
+
+## Start the monitoring process:
+
+```
+node monitor
+```
+
