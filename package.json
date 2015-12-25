@@ -9,5 +9,8 @@
   "license": "MPL-2.0",
   "devDependencies": {
     "modern-standard": "^1.4.1"
+  },
+  "dependencies": {
+    "debug": "^2.2.0"
   }
 }

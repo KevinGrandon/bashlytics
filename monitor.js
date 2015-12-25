@@ -1,3 +1,4 @@
+var debug = require('debug')('bashlytics')
 var fs = require('fs')
 var utils = require('./src/utils')
 
@@ -8,5 +9,8 @@ fs.watch(historyFile, event => {
   if (event !== 'change') {
   	return
   }
-  console.log('got change event', event)
+  debug('got change event')
+
+  var content = fs.readFileSync(historyFile, 'utf-8')
+  debug('all log content is:', content)
 })
