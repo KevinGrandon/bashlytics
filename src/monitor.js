@@ -1,8 +1,14 @@
 var debug = require('debug')('bashlytics')
 var fs = require('fs')
 var utils = require('./utils')
+var Table = require('cli-table')
 
 const historyFile = `${utils.homeDir()}/.bash_history`
+
+var table = new Table({
+  head: ['Command', 'Count'],
+  colWidths: [70, 30]
+})
 
 fs.watch(historyFile, event => {
   // Only care about change events
@@ -25,6 +31,7 @@ fs.watch(historyFile, event => {
     if (line.startsWith('#')) {
       return
     }
+    line = line.substring(0, 60)
     commandMap[line] = commandMap[line] || 1
     commandMap[line]++
   })
@@ -40,5 +47,6 @@ fs.watch(historyFile, event => {
   commandCounts.sort((a, b) => b[1] - a[1])
 
   // Output the top 10 used commands.
-  console.log('top 10 commands: ', commandCounts.slice(0, 10))
+  commandCounts.slice(0, 10).forEach((val) => table.push(val))
+  console.log(table.toString())
 })

@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "Bashlyics is a program which monitors terminal usage and reports the most used frequently used commands over time.",
   "scripts": {
-  	"start": "node src/monitor.js",
+    "start": "node src/monitor.js",
     "lint": "modern-standard"
   },
   "author": "Kevin Grandon <kevingrandon@yahoo.com",
@@ -12,6 +12,7 @@
     "modern-standard": "^1.4.1"
   },
   "dependencies": {
+    "cli-table": "^0.3.1",
     "debug": "^2.2.0"
   }
 }
