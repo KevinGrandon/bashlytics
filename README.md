@@ -16,6 +16,6 @@ HISTTIMEFORMAT='%F %T %t'
 ## Start the monitoring process:
 
 ```
-node monitor
+npm start
 ```
 
