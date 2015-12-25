@@ -1,6 +1,6 @@
 var debug = require('debug')('bashlytics')
 var fs = require('fs')
-var utils = require('./src/utils')
+var utils = require('./utils')
 
 const historyFile = `${utils.homeDir()}/.bash_history`
 
