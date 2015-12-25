@@ -1,13 +1,12 @@
 var fs = require('fs')
+var utils = require('./src/utils')
 
-function homeDir () {
-  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
-}
+const historyFile = `${utils.homeDir()}/.bash_history`
 
-fs.watch(`${homeDir()}/.bash_history`, event => {
+fs.watch(historyFile, event => {
   // Only care about change events
   if (event !== 'change') {
   	return
   }
-  console.log('got event!', event)
+  console.log('got change event', event)
 })
