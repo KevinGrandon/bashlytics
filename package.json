@@ -12,6 +12,7 @@
     "modern-standard": "^1.4.1"
   },
   "dependencies": {
+    "babel-cli": "^6.3.17",
     "cli-table": "^0.3.1",
     "debug": "^2.2.0",
     "hapi": "^11.1.3"
