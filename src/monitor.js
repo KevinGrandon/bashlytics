@@ -18,15 +18,28 @@ const Hapi = require('hapi')
 const server = new Hapi.Server();
 server.connection({ port: 4567 })
 
-server.start(() => {
-  console.log('Server running at:', server.info.uri)
-})
+server.register(require('vision'), (err) => {
+  if (err) {
+      throw err
+  }
 
-server.route({
+  server.views({
+    engines: { html: require('handlebars') },
+    path: __dirname + '/templates'
+  })
+
+  server.route({
     method: 'GET',
     path: '/',
     handler: (request, reply) => {
       var commandCounts = history.getAndOrderCommands()
-      reply('your most used commands are: ' + commandCounts)
+      reply.view('index', {
+        commands: commandCounts
+      })
     }
+  })
+})
+
+server.start(() => {
+  console.log('Server running at:', server.info.uri)
 })
