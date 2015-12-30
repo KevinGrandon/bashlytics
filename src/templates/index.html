@@ -4,6 +4,14 @@
   <title>Bashlytics Report</title>
 </head>
 <body>
-  Your most used commands are: {{commands}}
+  <h1>Most Used Commands</h1>
+  <table>
+    {{#each commands}}
+      <tr>
+        <td>{{this.[0]}}</td>
+        <td>{{this.[1]}}</td>
+      </tr>
+    {{/each}}
+  </table>
 </body>
 </html>
