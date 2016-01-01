@@ -1,6 +1,7 @@
 var fs = require('fs')
 var utils = require('./utils')
 
+const STRIP_QUOTED = true;
 const historyFile = `${utils.homeDir()}/.bash_history`
 
 module.exports.file = historyFile
@@ -20,7 +21,17 @@ module.exports.getAndOrderCommands = function () {
     if (line.startsWith('#')) {
       return
     }
+
+    // Strip any quoted text if necessary.
+    // This is so we can count `git commit "Some Message"` as a `git commit` command.
+    // I'm sure this will cause some false-positives, but it's a simple solution for now.
+    if (STRIP_QUOTED) {
+      line = line.replace(/".*"/g, '')
+    }
+
     line = line.substring(0, 60)
+    line = line.trim()
+
     commandMap[line] = commandMap[line] || 1
     commandMap[line]++
   })
