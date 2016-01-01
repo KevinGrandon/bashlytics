@@ -1,6 +1,6 @@
 {
   "name": "bashlytics",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Bashlyics is a program which monitors terminal usage and reports the most used frequently used commands over time.",
   "scripts": {
     "start": "node src/monitor.js",
