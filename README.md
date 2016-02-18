@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/KevinGrandon/bashlytics.svg)](https://david-dm.org/KevinGrandon/bashlytics)
+
 # Bashlytics
 
 Bashlyics is a program which monitors terminal usage and reports the most used frequently used commands over time.
